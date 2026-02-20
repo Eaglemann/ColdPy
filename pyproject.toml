@@ -1,0 +1,45 @@
+[build-system]
+requires = ["hatchling>=1.25.0"]
+build-backend = "hatchling.build"
+
+[project]
+name = "coldpy"
+version = "0.1.0"
+description = "Analyze Python startup import performance and memory usage"
+readme = "README.md"
+requires-python = ">=3.10"
+license = "MIT"
+keywords = ["python", "imports", "performance", "profiling", "cold-start", "cli"]
+classifiers = [
+  "Development Status :: 3 - Alpha",
+  "Environment :: Console",
+  "Intended Audience :: Developers",
+  "License :: OSI Approved :: MIT License",
+  "Operating System :: OS Independent",
+  "Programming Language :: Python :: 3",
+  "Programming Language :: Python :: 3.10",
+  "Programming Language :: Python :: 3.11",
+  "Programming Language :: Python :: 3.12",
+  "Topic :: Software Development :: Libraries :: Python Modules",
+  "Topic :: Software Development :: Testing",
+  "Topic :: System :: Benchmark",
+]
+dependencies = [
+  "typer>=0.12.0",
+  "rich>=13.7.0",
+]
+
+[project.scripts]
+coldpy = "coldpy.cli:app"
+
+[dependency-groups]
+dev = [
+  "build>=1.2.2",
+  "pytest>=8.4.0",
+  "twine>=5.1.1",
+]
+
+[project.urls]
+Homepage = "https://github.com/Eaglemann/ColdPy.git"
+Repository = "https://github.com/Eaglemann/ColdPy.git"
+Issues = "https://github.com/denis/ColdPy/issues"
