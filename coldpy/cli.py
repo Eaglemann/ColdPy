@@ -6,7 +6,7 @@ import typer
 from rich.console import Console
 
 from coldpy.cache import CacheError, read_cache, write_cache
-from coldpy.discovery import EXCLUSION_LABELS, discover_modules
+from coldpy.discovery import DEFAULT_EXCLUDE_PATTERNS, EXCLUSION_LABELS, discover_modules
 from coldpy.models import ModuleResult, ScanPayload
 from coldpy.reporter import print_summary, render_modules_table, write_json_report
 from coldpy.runtime import build_scan_environment, load_project_env, resolve_python_executable
@@ -74,6 +74,11 @@ def scan(
         "--no-project-env",
         help="Disable automatic loading of .env/.env.local from project path.",
     ),
+    exclude: list[str] = typer.Option(
+        [],
+        "--exclude",
+        help="Glob pattern to exclude files/modules from scan. Can be repeated.",
+    ),
 ) -> None:
     """Scan a Python project for import time and memory cost."""
     if threshold_ms < 0 or threshold_mb < 0:
@@ -97,8 +102,17 @@ def scan(
 
     scan_env = build_scan_environment(extra_env)
 
+    effective_exclusions = EXCLUSION_LABELS + [pattern for pattern in exclude if pattern not in EXCLUSION_LABELS]
+    file_exclude_patterns = DEFAULT_EXCLUDE_PATTERNS + [
+        pattern for pattern in exclude if pattern not in DEFAULT_EXCLUDE_PATTERNS
+    ]
+
     try:
-        module_targets = discover_modules(project_root)
+        module_targets, excluded_count = discover_modules(
+            project_root,
+            exclude_patterns=file_exclude_patterns,
+            return_excluded_count=True,
+        )
     except ValueError as exc:
         console.print(f"[red]{exc}[/red]")
         raise typer.Exit(code=1) from exc
@@ -112,7 +126,7 @@ def scan(
         module_targets=module_targets,
         threshold_ms=threshold_ms,
         threshold_mb=threshold_mb,
-        exclusions=EXCLUSION_LABELS,
+        exclusions=effective_exclusions,
         python_executable=runtime_python,
         scan_env=scan_env,
     )
@@ -120,6 +134,8 @@ def scan(
     console.print(f"[dim]Runtime Python: {runtime_python}[/dim]")
     if env_source is not None:
         console.print(f"[dim]Loaded env vars from: {env_source}[/dim]")
+    if excluded_count > 0:
+        console.print(f"[dim]Excluded modules/files: {excluded_count} (patterns: {', '.join(file_exclude_patterns)})[/dim]")
 
     sorted_modules = _sort_modules(payload.modules, TopSort.TIME)
     render_modules_table(sorted_modules, title="ColdPy Scan Report")
