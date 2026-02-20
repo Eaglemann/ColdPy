@@ -16,6 +16,16 @@ def test_discovery_excludes_tests_and_maps_modules() -> None:
     assert "pkg.fast" in names
     assert "pkg.slowish" in names
     assert "pkg.broken" in names
+    assert "alembic.env" not in names
+    assert "alembic.versions.0001_init" not in names
+    assert "migrations.0002_more" not in names
+
+
+def test_discovery_honors_custom_exclude_patterns() -> None:
+    modules = discover_modules(FIXTURE, exclude_patterns=["pkg/**"])
+    names = [m.name for m in modules]
+    assert "pkg.fast" not in names
+    assert "pkg.slowish" not in names
 
 
 def test_discovery_invalid_path_raises() -> None:

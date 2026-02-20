@@ -21,6 +21,20 @@ def test_scan_command_writes_json_and_cache(tmp_path: Path) -> None:
         assert result.exit_code == 0
         assert "ColdPy Scan Report" in result.stdout
         assert json_output.exists()
+        data = json_output.read_text(encoding="utf-8")
+        assert "\"schema_version\": \"1.0\"" in data
+        assert "\"exclusions\"" in data
+
+
+def test_scan_command_supports_exclude_patterns(tmp_path: Path) -> None:
+    with runner.isolated_filesystem(temp_dir=tmp_path):
+        result = runner.invoke(
+            app,
+            ["scan", str(FIXTURE), "--exclude", "pkg/slowish.py", "--no-cache"],
+            catch_exceptions=False,
+        )
+        assert result.exit_code == 0
+        assert "Excluded modules/files:" in result.stdout
 
 
 def test_top_requires_cache(tmp_path: Path) -> None:
