@@ -27,6 +27,7 @@ uv sync
 coldpy scan
 coldpy scan ./myproject
 coldpy scan ./myproject --json report.json
+coldpy scan ./myproject --exclude "migrations/**" --exclude "scripts/**"
 coldpy top 10
 coldpy top 20 --sort memory --threshold-mb 20
 ```
@@ -34,7 +35,7 @@ coldpy top 20 --sort memory --threshold-mb 20
 ## Commands
 
 - `coldpy scan [PATH=. ] [--json OUTPUT_JSON] [--threshold-ms N] [--threshold-mb N] [--no-cache]`
-- `coldpy scan PATH [--python PYTHON] [--env-file ENV_FILE] [--no-project-env]`
+- `coldpy scan PATH [--python PYTHON] [--env-file ENV_FILE] [--no-project-env] [--exclude PATTERN]`
 - `coldpy top [N=10] [--sort time|memory] [--threshold-ms N] [--threshold-mb N]`
 
 `coldpy top` reads `./.coldpy/cache.json` and fails if no cache exists.
@@ -42,6 +43,7 @@ coldpy top 20 --sort memory --threshold-mb 20
 For `scan`, ColdPy auto-detects project virtualenv Python in `.venv`, `venv`, or `env`
 and auto-loads environment variables from `.env`/`.env.local` when present.
 Use `--python` and `--env-file` only when you need to override auto-detection.
+ColdPy also excludes common migration paths by default (`alembic/**`, `migrations/**`).
 
 ## JSON schema (v1)
 
