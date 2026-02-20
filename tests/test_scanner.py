@@ -1,6 +1,7 @@
 from pathlib import Path
 
 from coldpy.discovery import discover_modules
+from coldpy.runtime import build_scan_environment
 from coldpy.scanner import scan_modules
 
 
@@ -35,3 +36,14 @@ def test_scan_payload_schema_shape() -> None:
     assert "project_root" in raw
     assert set(raw["summary"].keys()) == {"total_modules", "scanned_modules", "failed_modules"}
     assert isinstance(raw["modules"], list)
+
+
+def test_scan_modules_can_use_custom_env_for_imports() -> None:
+    targets = [target for target in discover_modules(FIXTURE) if target.name == "pkg.env_required"]
+    payload = scan_modules(
+        FIXTURE,
+        targets,
+        scan_env=build_scan_environment({"COLDPY_TEST_TOKEN": "abc"}),
+    )
+    assert payload.summary.scanned_modules == 1
+    assert payload.modules[0].status == "ok"

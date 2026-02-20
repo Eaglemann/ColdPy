@@ -1,0 +1,318 @@
+{
+  "schema_version": "1.0",
+  "generated_at": "2026-02-20T12:12:22+00:00",
+  "project_root": "/Users/denis/Documents/lvpilot-backend",
+  "settings": {
+    "threshold_ms": 100.0,
+    "threshold_mb": 50.0,
+    "exclusions": [
+      ".git",
+      ".venv",
+      "__pycache__",
+      "build",
+      "dist",
+      "env",
+      "site-packages",
+      "tests",
+      "venv",
+      "hidden.*",
+      "test_*.py",
+      "*_test.py"
+    ]
+  },
+  "summary": {
+    "total_modules": 32,
+    "scanned_modules": 8,
+    "failed_modules": 24
+  },
+  "modules": [
+    {
+      "name": "alembic.env",
+      "file": "/Users/denis/Documents/lvpilot-backend/alembic/env.py",
+      "import_time_ms": null,
+      "memory_mb": null,
+      "status": "error",
+      "error": "ModuleNotFoundError: No module named 'sqlalchemy'",
+      "notes": []
+    },
+    {
+      "name": "alembic.versions.251e965378f3_create_user_table",
+      "file": "/Users/denis/Documents/lvpilot-backend/alembic/versions/251e965378f3_create_user_table.py",
+      "import_time_ms": null,
+      "memory_mb": null,
+      "status": "error",
+      "error": "ImportError: cannot import name 'op' from 'alembic' (unknown location)",
+      "notes": []
+    },
+    {
+      "name": "alembic.versions.5a7d9c4d0670_create_user_table",
+      "file": "/Users/denis/Documents/lvpilot-backend/alembic/versions/5a7d9c4d0670_create_user_table.py",
+      "import_time_ms": null,
+      "memory_mb": null,
+      "status": "error",
+      "error": "ImportError: cannot import name 'op' from 'alembic' (unknown location)",
+      "notes": []
+    },
+    {
+      "name": "alembic.versions.78837e85814f_create_the_table_which_will_store_the_",
+      "file": "/Users/denis/Documents/lvpilot-backend/alembic/versions/78837e85814f_create_the_table_which_will_store_the_.py",
+      "import_time_ms": null,
+      "memory_mb": null,
+      "status": "error",
+      "error": "ImportError: cannot import name 'op' from 'alembic' (unknown location)",
+      "notes": []
+    },
+    {
+      "name": "alembic.versions.9193b06ca4b2_create_the_table_which_will_store_the_",
+      "file": "/Users/denis/Documents/lvpilot-backend/alembic/versions/9193b06ca4b2_create_the_table_which_will_store_the_.py",
+      "import_time_ms": null,
+      "memory_mb": null,
+      "status": "error",
+      "error": "ImportError: cannot import name 'op' from 'alembic' (unknown location)",
+      "notes": []
+    },
+    {
+      "name": "alembic.versions.d7158cd7a4a6_create_tables_for_refresh_tokens",
+      "file": "/Users/denis/Documents/lvpilot-backend/alembic/versions/d7158cd7a4a6_create_tables_for_refresh_tokens.py",
+      "import_time_ms": null,
+      "memory_mb": null,
+      "status": "error",
+      "error": "ImportError: cannot import name 'op' from 'alembic' (unknown location)",
+      "notes": []
+    },
+    {
+      "name": "api",
+      "file": "/Users/denis/Documents/lvpilot-backend/api/__init__.py",
+      "import_time_ms": 0.111,
+      "memory_mb": 0.007,
+      "status": "ok",
+      "error": null,
+      "notes": []
+    },
+    {
+      "name": "api.auth",
+      "file": "/Users/denis/Documents/lvpilot-backend/api/auth/__init__.py",
+      "import_time_ms": 0.231,
+      "memory_mb": 0.009,
+      "status": "ok",
+      "error": null,
+      "notes": []
+    },
+    {
+      "name": "api.auth.routes",
+      "file": "/Users/denis/Documents/lvpilot-backend/api/auth/routes.py",
+      "import_time_ms": null,
+      "memory_mb": null,
+      "status": "error",
+      "error": "ModuleNotFoundError: No module named 'fastapi'",
+      "notes": []
+    },
+    {
+      "name": "api.pilot",
+      "file": "/Users/denis/Documents/lvpilot-backend/api/pilot/__init__.py",
+      "import_time_ms": 0.23,
+      "memory_mb": 0.009,
+      "status": "ok",
+      "error": null,
+      "notes": []
+    },
+    {
+      "name": "api.pilot.routes",
+      "file": "/Users/denis/Documents/lvpilot-backend/api/pilot/routes.py",
+      "import_time_ms": null,
+      "memory_mb": null,
+      "status": "error",
+      "error": "ModuleNotFoundError: No module named 'fastapi'",
+      "notes": []
+    },
+    {
+      "name": "config",
+      "file": "/Users/denis/Documents/lvpilot-backend/config.py",
+      "import_time_ms": null,
+      "memory_mb": null,
+      "status": "error",
+      "error": "ModuleNotFoundError: No module named 'pydantic_settings'",
+      "notes": []
+    },
+    {
+      "name": "db.base",
+      "file": "/Users/denis/Documents/lvpilot-backend/db/base.py",
+      "import_time_ms": null,
+      "memory_mb": null,
+      "status": "error",
+      "error": "ModuleNotFoundError: No module named 'sqlalchemy'",
+      "notes": []
+    },
+    {
+      "name": "db.session",
+      "file": "/Users/denis/Documents/lvpilot-backend/db/session.py",
+      "import_time_ms": null,
+      "memory_mb": null,
+      "status": "error",
+      "error": "ModuleNotFoundError: No module named 'sqlalchemy'",
+      "notes": []
+    },
+    {
+      "name": "main",
+      "file": "/Users/denis/Documents/lvpilot-backend/main.py",
+      "import_time_ms": null,
+      "memory_mb": null,
+      "status": "error",
+      "error": "ModuleNotFoundError: No module named 'fastapi'",
+      "notes": []
+    },
+    {
+      "name": "models",
+      "file": "/Users/denis/Documents/lvpilot-backend/models/__init__.py",
+      "import_time_ms": null,
+      "memory_mb": null,
+      "status": "error",
+      "error": "ModuleNotFoundError: No module named 'sqlalchemy'",
+      "notes": []
+    },
+    {
+      "name": "models.auth",
+      "file": "/Users/denis/Documents/lvpilot-backend/models/auth.py",
+      "import_time_ms": null,
+      "memory_mb": null,
+      "status": "error",
+      "error": "ModuleNotFoundError: No module named 'sqlalchemy'",
+      "notes": []
+    },
+    {
+      "name": "models.pilot",
+      "file": "/Users/denis/Documents/lvpilot-backend/models/pilot.py",
+      "import_time_ms": null,
+      "memory_mb": null,
+      "status": "error",
+      "error": "ModuleNotFoundError: No module named 'sqlalchemy'",
+      "notes": []
+    },
+    {
+      "name": "models.refresh_token",
+      "file": "/Users/denis/Documents/lvpilot-backend/models/refresh_token.py",
+      "import_time_ms": null,
+      "memory_mb": null,
+      "status": "error",
+      "error": "ModuleNotFoundError: No module named 'sqlalchemy'",
+      "notes": []
+    },
+    {
+      "name": "schema",
+      "file": "/Users/denis/Documents/lvpilot-backend/schema/__init__.py",
+      "import_time_ms": 0.115,
+      "memory_mb": 0.007,
+      "status": "ok",
+      "error": null,
+      "notes": []
+    },
+    {
+      "name": "schema.auth",
+      "file": "/Users/denis/Documents/lvpilot-backend/schema/auth.py",
+      "import_time_ms": null,
+      "memory_mb": null,
+      "status": "error",
+      "error": "ModuleNotFoundError: No module named 'pydantic'",
+      "notes": []
+    },
+    {
+      "name": "schema.base",
+      "file": "/Users/denis/Documents/lvpilot-backend/schema/base.py",
+      "import_time_ms": null,
+      "memory_mb": null,
+      "status": "error",
+      "error": "ModuleNotFoundError: No module named 'pydantic'",
+      "notes": []
+    },
+    {
+      "name": "services",
+      "file": "/Users/denis/Documents/lvpilot-backend/services/__init__.py",
+      "import_time_ms": 0.114,
+      "memory_mb": 0.007,
+      "status": "ok",
+      "error": null,
+      "notes": []
+    },
+    {
+      "name": "services.gaeb_reader",
+      "file": "/Users/denis/Documents/lvpilot-backend/services/gaeb_reader.py",
+      "import_time_ms": 0.246,
+      "memory_mb": 0.009,
+      "status": "ok",
+      "error": null,
+      "notes": []
+    },
+    {
+      "name": "services.groq",
+      "file": "/Users/denis/Documents/lvpilot-backend/services/groq.py",
+      "import_time_ms": null,
+      "memory_mb": null,
+      "status": "error",
+      "error": "ModuleNotFoundError: No module named 'pydantic_settings'",
+      "notes": []
+    },
+    {
+      "name": "utils.auth_dependencies",
+      "file": "/Users/denis/Documents/lvpilot-backend/utils/auth_dependencies.py",
+      "import_time_ms": null,
+      "memory_mb": null,
+      "status": "error",
+      "error": "ModuleNotFoundError: No module named 'fastapi'",
+      "notes": []
+    },
+    {
+      "name": "utils.content_length",
+      "file": "/Users/denis/Documents/lvpilot-backend/utils/content_length.py",
+      "import_time_ms": null,
+      "memory_mb": null,
+      "status": "error",
+      "error": "ModuleNotFoundError: No module named 'fastapi'",
+      "notes": []
+    },
+    {
+      "name": "utils.cookies",
+      "file": "/Users/denis/Documents/lvpilot-backend/utils/cookies.py",
+      "import_time_ms": null,
+      "memory_mb": null,
+      "status": "error",
+      "error": "ModuleNotFoundError: No module named 'pydantic_settings'",
+      "notes": []
+    },
+    {
+      "name": "utils.jwt",
+      "file": "/Users/denis/Documents/lvpilot-backend/utils/jwt.py",
+      "import_time_ms": null,
+      "memory_mb": null,
+      "status": "error",
+      "error": "ModuleNotFoundError: No module named 'jose'",
+      "notes": []
+    },
+    {
+      "name": "utils.refresh",
+      "file": "/Users/denis/Documents/lvpilot-backend/utils/refresh.py",
+      "import_time_ms": 5.16,
+      "memory_mb": 0.503,
+      "status": "ok",
+      "error": null,
+      "notes": []
+    },
+    {
+      "name": "utils.security",
+      "file": "/Users/denis/Documents/lvpilot-backend/utils/security.py",
+      "import_time_ms": null,
+      "memory_mb": null,
+      "status": "error",
+      "error": "ModuleNotFoundError: No module named 'passlib'",
+      "notes": []
+    },
+    {
+      "name": "utils.text_chunking",
+      "file": "/Users/denis/Documents/lvpilot-backend/utils/text_chunking.py",
+      "import_time_ms": 0.303,
+      "memory_mb": 0.011,
+      "status": "ok",
+      "error": null,
+      "notes": []
+    }
+  ]
+}

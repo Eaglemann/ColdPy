@@ -12,11 +12,15 @@ DEFAULT_THRESHOLD_MS = 100.0
 DEFAULT_THRESHOLD_MB = 50.0
 
 
-def _measure_module(module_name: str, project_root: Path) -> dict[str, object]:
+def _measure_module(
+    module_name: str,
+    project_root: Path,
+    python_executable: Path | None = None,
+    scan_env: dict[str, str] | None = None,
+) -> dict[str, object]:
     probe_code = r'''
 import importlib
 import json
-import os
 import sys
 import time
 import tracemalloc
@@ -49,11 +53,14 @@ finally:
 print(json.dumps(output))
 '''
 
+    executable = str(python_executable or Path(sys.executable))
     completed = subprocess.run(
-        [sys.executable, "-c", probe_code, module_name, str(project_root)],
+        [executable, "-c", probe_code, module_name, str(project_root)],
         text=True,
         capture_output=True,
         check=False,
+        cwd=str(project_root),
+        env=scan_env,
     )
 
     if completed.returncode != 0 and not completed.stdout.strip():
@@ -87,11 +94,18 @@ def scan_modules(
     threshold_ms: float = DEFAULT_THRESHOLD_MS,
     threshold_mb: float = DEFAULT_THRESHOLD_MB,
     exclusions: list[str] | None = None,
+    python_executable: Path | None = None,
+    scan_env: dict[str, str] | None = None,
 ) -> ScanPayload:
     modules: list[ModuleResult] = []
 
     for target in module_targets:
-        result = _measure_module(target.name, project_root)
+        result = _measure_module(
+            target.name,
+            project_root,
+            python_executable=python_executable,
+            scan_env=scan_env,
+        )
         if result.get("status") == "ok":
             import_time_ms = float(result["import_time_ms"])
             memory_mb = float(result["memory_mb"])
